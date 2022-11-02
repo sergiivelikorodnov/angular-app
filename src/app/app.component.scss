@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  flex-direction: column;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

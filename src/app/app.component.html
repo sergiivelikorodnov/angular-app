@@ -1,13 +1,12 @@
-<div class="max-w-2xl container mx-auto pt-5">
-  <h1 class="text-3xl font-bold text-center mb-5">
-    {{ title | titlecase }}
-  </h1>
-
-  <div *ngIf="loading" class="flex justify-center">
-    <span nz-icon [nzType]="'loading'" [nzSpin]="true"></span>
-  </div>
-
-  <div class="grid grid-cols-3 gap-4">
-    <app-product *ngFor="let product of products" [product]="product"></app-product>
+<div class="h-screen">
+  <app-global-error></app-global-error>
+  <div class="flex flex-col h-full">
+    <app-header></app-header>
+    <div class="max-w-7xl mx-auto flex h-full container">
+      <app-navigation></app-navigation>
+      <div class="w-full">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
 </div>
