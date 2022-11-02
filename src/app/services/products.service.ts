@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { catchError, delay, Observable, throwError } from 'rxjs'
+import { catchError, delay, Observable, retry, throwError } from 'rxjs'
 import { IProduct } from '../models/product'
 import { ErrorService } from './error.service'
 
@@ -15,7 +15,7 @@ export class ProductsService {
       .get<IProduct[]>('http://localhost:3001/products', {
         params: new HttpParams().append('_limit', 3)
       })
-      .pipe(delay(100), catchError(this.errorHandler.bind(this)))
+      .pipe(delay(100), retry(2), catchError(this.errorHandler.bind(this)))
   }
 
   private errorHandler(error: HttpErrorResponse) {

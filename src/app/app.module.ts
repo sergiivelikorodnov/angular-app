@@ -15,12 +15,14 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { DocumentsPageComponent } from './pages/documents-page/documents-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { HeaderComponent } from './components/header/header.component'
+import { HeaderComponent } from './components/header/header.component';
+import { ClientComponent } from './components/client/client.component';
+import { SearchClientPipe } from './pipes/search-client.pipe'
 
 const icons: IconDefinition[] = [TagOutline, BarsOutline]
 
 @NgModule({
-  declarations: [AppComponent, ProductComponent, GlobalErrorComponent, ProductsPageComponent, WelcomePageComponent, DocumentsPageComponent, NavigationComponent, HeaderComponent],
+  declarations: [AppComponent, ProductComponent, GlobalErrorComponent, ProductsPageComponent, WelcomePageComponent, DocumentsPageComponent, NavigationComponent, HeaderComponent, ClientComponent, SearchClientPipe],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NzIconModule.forChild(icons)],
   providers: [],
   bootstrap: [AppComponent]
