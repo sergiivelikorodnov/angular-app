@@ -14,6 +14,7 @@ export class SortDirective {
     const sort = new Sort()
     // Get Reference Of Current Clicked Element
     const elem = this.targetElem.nativeElement
+
     // Get In WHich Order list should be sorted by default it should be set to desc on element attribute
     const order = elem.getAttribute('data-order')
     // Get The Property Type specially set [data-type=date] if it is date field
