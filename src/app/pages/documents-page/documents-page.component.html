@@ -8,10 +8,10 @@ placeholder="Search client"
 <table class="w-11/12 shadow-md rounded m-10 mt-0">
   <thead class="bg-blue-50">
     <tr >
-      <th class="p-4 text-left font-bold w-1/5">Client</th>
-      <th class="p-4 text-left font-bold w-1/5">Date</th>
-      <th class="p-4 text-left font-bold w-1/5">Amount</th>
-      <th class="p-4 text-left font-bold w-2/5">Notice</th>
+      <th [appSort]="clients" data-order="desc" class="p-4 text-left font-bold w-1/5" data-name="client">Client</th>
+      <th [appSort]="clients" data-order="desc" class="p-4 text-left font-bold w-1/5" data-name="date" data-type="date">Date</th>
+      <th [appSort]="clients" data-order="desc" class="p-4 text-left font-bold w-1/5" data-name="amount">Amount</th>
+      <th [appSort]="clients" data-order="desc" class="p-4 text-left font-bold w-2/5" data-name="notice">Notice</th>
     </tr>
   </thead>
   <tbody class="divide-y divide-gray-300" *ngIf="clients as clientss">
