@@ -5,7 +5,7 @@
   <thead class="bg-blue-50">
     <tr>
       <th *ngFor="let header of headers" [ngClass]="{'text-blue-600' : selectedHeader===header.title}" (click)="useSelector(header.title)" [appSort]="clients"
-        data-order="desc" [ngClass]="header.width" class="p-4 text-left font-bold capitalize" [attr.data-name]="header.title">{{header.title}}
+        data-order="desc" [class]="header.width" class="p-4 text-left font-bold capitalize cursor-pointer" [attr.data-name]="header.title">{{header.title}}
           <span *ngIf="selectedHeader===header.title && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
           <span *ngIf="selectedHeader===header.title && selectedOrder==='asc'" class="relative top-[-3px]" nz-icon nzType="arrow-down" nzTheme="outline"></span>
       </th>
