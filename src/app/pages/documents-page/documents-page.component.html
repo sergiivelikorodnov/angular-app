@@ -4,25 +4,10 @@
 <table class="w-11/12 shadow-md rounded m-10 mt-0">
   <thead class="bg-blue-50">
     <tr>
-      <th [ngClass]="{'text-blue-600' : selectedHeader==='client'}" (click)="useSelector('client')" [appSort]="clients"
-        data-order="desc" class="p-4 text-left font-bold w-1/5" data-name="client">Client
-          <span *ngIf="selectedHeader==='client' && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
-          <span *ngIf="selectedHeader==='client' && selectedOrder==='asc'" class="relative top-[-3px]" nz-icon nzType="arrow-down" nzTheme="outline"></span>
-      </th>
-      <th [ngClass]="{'text-blue-600' : selectedHeader==='date'}" (click)="useSelector('date')" [appSort]="clients"
-        data-order="desc" class="p-4 text-left font-bold w-1/5" data-name="date" data-type="date">Date
-          <span *ngIf="selectedHeader==='date' && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
-          <span *ngIf="selectedHeader==='date' && selectedOrder==='asc'" class="relative top-[-3px]" nz-icon nzType="arrow-down" nzTheme="outline"></span>
-      </th>
-      <th [ngClass]="{'text-blue-600' : selectedHeader==='amount'}" (click)="useSelector('amount')" [appSort]="clients"
-        data-order="desc" class="p-4 text-left font-bold w-1/5" data-name="amount">Amount
-        <span *ngIf="selectedHeader==='amount' && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
-        <span *ngIf="selectedHeader==='amount' && selectedOrder==='asc'" class="relative top-[-3px]" nz-icon nzType="arrow-down" nzTheme="outline"></span>
-      </th>
-      <th [ngClass]="{'text-blue-600' : selectedHeader==='notice'}" (click)="useSelector('notice')" [appSort]="clients"
-        data-order="desc" class="p-4 text-left font-bold w-2/5" data-name="notice">Notice
-        <span *ngIf="selectedHeader==='notice' && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
-        <span *ngIf="selectedHeader==='notice' && selectedOrder==='asc'" nz-icon nzType="arrow-down" nzTheme="outline"></span>
+      <th *ngFor="let header of headers" [ngClass]="{'text-blue-600' : selectedHeader===header.title}" (click)="useSelector(header.title)" [appSort]="clients"
+        data-order="desc" [ngClass]="header.width" class="p-4 text-left font-bold capitalize" [attr.data-name]="header.title">{{header.title}}
+          <span *ngIf="selectedHeader===header.title && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
+          <span *ngIf="selectedHeader===header.title && selectedOrder==='asc'" class="relative top-[-3px]" nz-icon nzType="arrow-down" nzTheme="outline"></span>
       </th>
     </tr>
   </thead>

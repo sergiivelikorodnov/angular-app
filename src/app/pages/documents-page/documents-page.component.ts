@@ -18,19 +18,19 @@ export class DocumentsPageComponent implements OnInit {
   headers: Header[] = [
     {
       title: 'client',
-      width: '1/5'
+      width: 'w-1/5'
     },
     {
       title: 'date',
-      width: '1/5'
+      width: 'w-1/5'
     },
     {
       title: 'amount',
-      width: '1/5'
+      width: 'w-1/5'
     },
     {
       title: 'notice',
-      width: '1/5'
+      width: 'w-2/5'
     }
   ]
   term = ''
