@@ -24,6 +24,9 @@ export class SortDirective {
     if (order === 'desc') {
       this.appSort.sort(sort.startSort(property, order, type))
       elem.setAttribute('data-order', 'asc')
+    } else if (order === 'asc') {
+      this.appSort.sort(sort.startSort('id', order, type))
+      elem.setAttribute('data-order', 'none')
     } else {
       this.appSort.sort(sort.startSort(property, order, type))
       elem.setAttribute('data-order', 'desc')

@@ -1,11 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core'
-import { IClient } from 'src/app/models/client'
+import { IClient, IHeader } from 'src/app/models/client'
 import { clients as data } from '../../data/clients'
+import { headers } from '../../data/clients'
 
-interface Header {
-  title: string
-  width: string
-}
 @Component({
   selector: 'app-documents-page',
   templateUrl: './documents-page.component.html',
@@ -15,24 +12,7 @@ export class DocumentsPageComponent implements OnInit {
   constructor(private targetElem: ElementRef) {}
 
   clients: IClient[] = data
-  headers: Header[] = [
-    {
-      title: 'client',
-      width: 'w-1/5'
-    },
-    {
-      title: 'date',
-      width: 'w-1/5'
-    },
-    {
-      title: 'amount',
-      width: 'w-1/5'
-    },
-    {
-      title: 'notice',
-      width: 'w-2/5'
-    }
-  ]
+  headers: IHeader[] = headers
   term = ''
   selectedHeader = ''
   selectedOrder = ''
