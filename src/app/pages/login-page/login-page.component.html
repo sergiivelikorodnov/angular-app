@@ -1,8 +1,10 @@
-<div class="bg-[url('/assets/login_bg.jpg')] w-full h-full bg-no-repeat bg-cover flex items-center justify-center">
-  <div class="bg-white/70 p-10 rounded-md shadow-md flex flex-col gap-3">
-    <h1 class="text-bold font-[Roboto] text-xl mb-0">Login</h1>
-    <input class="shadow-lg rounded-md px-4 py-2 font-[Roboto] w-[250px]" type="text" placeholder="Login name">
-    <input class="shadow-lgd rounded-md px-4 py-2 font-[Roboto] w-[250px]" type="password" placeholder="Password">
-    <button type="button" class="px-6 py-2 rounded-md bg-white border-gray-600 shadow-lg text-blue-800 text-base font-[Roboto] hover:bg-blue-800 hover:text-white ease-in duration-100">Sign in</button>
-  </div>
+<div   class="bg-[url('/assets/login_bg.jpg')] w-full h-full bg-no-repeat bg-cover flex items-center justify-center">
+  <form #loginForm="ngForm" (ngSubmit)="authService.doLogin(loginForm.value)">
+    <div class="bg-white/70 p-10 rounded-md shadow-md flex flex-col gap-3">
+      <h1 class="text-bold font-[Roboto] text-xl mb-0">Login</h1>
+      <input name="email" id="email" ngModel class="shadow-lg rounded-md px-4 py-2 font-[Roboto] w-[250px]" type="text" placeholder="Login name">
+      <input name="password" id="password" ngModel class="shadow-lgd rounded-md px-4 py-2 font-[Roboto] w-[250px]" type="password" placeholder="Password">
+      <button type="submit" class="px-6 py-2 rounded-md bg-white border-gray-600 shadow-lg text-blue-800 text-base font-[Roboto] hover:bg-blue-800 hover:text-white ease-in duration-100">Sign in</button>
+    </div>
+  </form>
 </div>

@@ -19,8 +19,13 @@ import { HeaderComponent } from './components/header/header.component'
 import { ClientComponent } from './components/client/client.component'
 import { SearchClientPipe } from './pipes/search-client.pipe'
 
-import { SortDirective } from './directive/sort.directive';
+import { SortDirective } from './directive/sort.directive'
 import { LoginPageComponent } from './pages/login-page/login-page.component'
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
+import { environment } from '../environments/environment'
+import { provideAuth, getAuth } from '@angular/fire/auth'
+import { provideFirestore, getFirestore } from '@angular/fire/firestore'
+import { FIREBASE_OPTIONS } from '@angular/fire/compat'
 
 const icons: IconDefinition[] = [TagOutline, BarsOutline]
 
@@ -39,8 +44,17 @@ const icons: IconDefinition[] = [TagOutline, BarsOutline]
     SortDirective,
     LoginPageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NzIconModule.forChild(icons)],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NzIconModule.forChild(icons),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
+  ],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

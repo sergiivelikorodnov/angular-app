@@ -1,3 +1,4 @@
 <div class="flex justify-center pt-20">
-  <h1 class="text-xl font-bold font-[Roboto]"> Greetings! We hope you find what you’re looking for and that you enjoy your stay. </h1>
+  <h1 *ngIf="authService.userData as user" class="text-xl font-bold font-[Roboto] text-center"> Greetings, {{user.email}}!<br>
+    We hope you find what you’re looking for and that you enjoy your stay. </h1>
 </div>
