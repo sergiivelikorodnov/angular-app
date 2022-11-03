@@ -1,6 +1,7 @@
 <div class="h-screen">
   <app-global-error></app-global-error>
-  <div class="flex flex-col h-full">
+  <app-login-page *ngIf="hasRoute('/')"></app-login-page>
+  <div *ngIf="!hasRoute('/')" class="flex flex-col h-full">
     <app-header></app-header>
     <div class="max-w-7xl mx-auto flex h-full container">
       <app-navigation></app-navigation>
