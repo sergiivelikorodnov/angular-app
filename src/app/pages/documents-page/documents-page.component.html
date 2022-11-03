@@ -17,9 +17,9 @@
       <td class="p-4 text-left">{{ client.date | date }}</td>
       <td class="p-4 text-left">{{ client.amount | currency: 'EUR' }}</td>
       <td class="p-4 text-left relative w-full flex">{{ client.notice }}
-        <div class="absolute top-3 right-5">
-          <button type="button">Edit</button>
-          <button type="button">Delete</button>
+        <div class="absolute top-3 right-5 flex gap-5">
+          <button class="text-blue-600" type="button"><span  nz-icon nzType="edit" nzTheme="outline"></span></button>
+          <button class="text-red-500" type="button"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
         </div>
       </td>
 

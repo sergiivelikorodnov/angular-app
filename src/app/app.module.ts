@@ -19,7 +19,8 @@ import { HeaderComponent } from './components/header/header.component'
 import { ClientComponent } from './components/client/client.component'
 import { SearchClientPipe } from './pipes/search-client.pipe'
 
-import { SortDirective } from './directive/sort.directive'
+import { SortDirective } from './directive/sort.directive';
+import { LoginPageComponent } from './pages/login-page/login-page.component'
 
 const icons: IconDefinition[] = [TagOutline, BarsOutline]
 
@@ -35,7 +36,8 @@ const icons: IconDefinition[] = [TagOutline, BarsOutline]
     HeaderComponent,
     ClientComponent,
     SearchClientPipe,
-    SortDirective
+    SortDirective,
+    LoginPageComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NzIconModule.forChild(icons)],
   providers: [],

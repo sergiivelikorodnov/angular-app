@@ -1,1 +1,1 @@
-export const MENU = ['Domov', 'Artikli', 'Dokumenti']
+export const MENU = ['domov', 'artikli', 'dokumenti']
