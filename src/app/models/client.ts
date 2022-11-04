@@ -1,6 +1,8 @@
+import { Timestamp } from '@angular/fire/firestore'
+
 export interface IClient {
   id: string
-  date: string
+  date: Timestamp
   client: string
   amount: number
   notice: string | null

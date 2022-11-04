@@ -1,6 +1,6 @@
 import { IClient, IHeader } from '../models/client'
 
-export const clients: IClient[] = [
+/* export const clients: IClient[] = [
   {
     id: '1',
     date: '2021-05-21T12:13:52.569Z',
@@ -22,7 +22,7 @@ export const clients: IClient[] = [
     amount: 250,
     notice: null
   }
-]
+] */
 
 export const headers: IHeader[] = [
   {

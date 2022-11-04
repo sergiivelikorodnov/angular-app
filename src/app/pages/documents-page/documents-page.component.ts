@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core'
+import { Observable, tap } from 'rxjs'
 import { IClient, IHeader } from 'src/app/models/client'
-import { clients as data } from '../../data/clients'
+import { DocumentsService } from 'src/app/services/documents.service'
 import { headers } from '../../data/clients'
 
 @Component({
@@ -9,10 +10,11 @@ import { headers } from '../../data/clients'
   styleUrls: ['./documents-page.component.scss']
 })
 export class DocumentsPageComponent implements OnInit {
-  constructor(private targetElem: ElementRef) {}
+  constructor(private targetElem: ElementRef, private documentsService: DocumentsService) {}
 
-  clients: IClient[] = data
+  clients$: Observable<IClient[]>
   headers: IHeader[] = headers
+  loading = false
   term = ''
   selectedHeader = ''
   selectedOrder = ''
@@ -24,5 +26,9 @@ export class DocumentsPageComponent implements OnInit {
     this.selectedOrder = order
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loading = true
+    //this.documentsService.getData()
+    this.clients$ = this.documentsService.getAll() /* .pipe(tap(() => (this.loading = false))) */
+  }
 }

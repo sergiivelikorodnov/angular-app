@@ -1,20 +1,20 @@
 <input type="text" class="px-4 py-2 w-11/12 border m-10 mb-5 rounded-md" placeholder="Search client"
   [(ngModel)]="term" />
 
-<table class="w-11/12 shadow-md rounded m-10 mt-0">
+<table *ngIf="clients$ | async as clients" class="w-11/12 shadow-md rounded m-10 mt-0">
   <thead class="bg-blue-50">
     <tr>
-      <th *ngFor="let header of headers" [ngClass]="{'text-blue-600' : selectedHeader===header.title && selectedOrder!=='none'}" (click)="useSelector(header.title)" [appSort]="clients"
+      <th *ngFor="let header of headers"  [ngClass]="{'text-blue-600' : selectedHeader===header.title && selectedOrder!=='none'}" (click)="useSelector(header.title)" [appSort]="clients"
         data-order="none" [class]="header.width" class="p-4 text-left font-bold capitalize cursor-pointer" [attr.data-name]="header.title">{{header.title}}
           <span *ngIf="selectedHeader===header.title && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
           <span *ngIf="selectedHeader===header.title && selectedOrder==='asc'" class="relative top-[-3px]" nz-icon nzType="arrow-down" nzTheme="outline"></span>
       </th>
     </tr>
   </thead>
-  <tbody class="divide-y divide-gray-300" *ngIf="clients as clientss">
-    <tr *ngFor="let client of clientss | searchClient : term">
+  <tbody class="divide-y divide-gray-300">
+    <tr *ngFor="let client of clients | searchClient : term">
       <th class="p-4 text-left">{{ client.client }}</th>
-      <td class="p-4 text-left">{{ client.date | date }}</td>
+      <td *ngIf="client.date" class="p-4 text-left">{{ client.date.seconds*1000 | date }}</td>
       <td class="p-4 text-left">{{ client.amount | currency: 'EUR' }}</td>
       <td class="p-4 text-left relative w-full flex">{{ client.notice }}
         <div class="absolute top-3 right-5 flex gap-5">
