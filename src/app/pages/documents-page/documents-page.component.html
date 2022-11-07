@@ -6,7 +6,7 @@
 <div class="flex justify-between items-center w-full mt-0 mb-5 flex-col gap-2 sm:flex-row sm:mt-10">
   <input
     type="text"
-    class="px-4 py-2 w-full border rounded-md sm:w-1/2"
+    class="px-4 py-2 w-full border rounded-md font-[Roboto] sm:w-1/2"
     placeholder="Search client"
     [(ngModel)]="term"
   />
@@ -17,7 +17,7 @@
   >Add Document</button>
 </div>
 
-<table *ngIf="clients$ | async as clients" class="w-full shadow-md rounded p-10 mt-0">
+<table *ngIf="clients$ | async as clients" class="w-full shadow-md rounded p-10 mt-0 font-[Roboto]">
   <thead class="bg-blue-50">
     <tr>
       <th
