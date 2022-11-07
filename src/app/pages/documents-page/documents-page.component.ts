@@ -7,8 +7,7 @@ import { headers } from '../../data/clients'
 
 @Component({
   selector: 'app-documents-page',
-  templateUrl: './documents-page.component.html',
-  styleUrls: ['./documents-page.component.scss']
+  templateUrl: './documents-page.component.html'
 })
 export class DocumentsPageComponent implements OnInit {
   constructor(

@@ -8,8 +8,7 @@ import { ModalService } from 'src/app/services/modal.service'
 
 @Component({
   selector: 'app-create-client',
-  templateUrl: './create-client.component.html',
-  styleUrls: ['./create-client.component.scss']
+  templateUrl: './create-client.component.html'
 })
 export class CreateClientComponent implements OnInit {
   constructor(

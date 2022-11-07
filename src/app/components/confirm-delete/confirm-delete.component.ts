@@ -7,8 +7,7 @@ import { throwError } from 'rxjs'
 
 @Component({
   selector: 'app-confirm-delete',
-  templateUrl: './confirm-delete.component.html',
-  styleUrls: ['./confirm-delete.component.scss']
+  templateUrl: './confirm-delete.component.html'
 })
 export class ConfirmDeleteComponent implements OnInit {
   @Input() clientData: IClient

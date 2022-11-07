@@ -6,7 +6,6 @@ import { Observable, tap } from 'rxjs'
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
-  styleUrls: ['./products-page.component.scss'],
   styles: [
     `
       [nz-icon] {
