@@ -1,13 +1,48 @@
-<input type="text" class="px-4 py-2 w-11/12 border m-10 mb-5 rounded-md" placeholder="Search client"
-  [(ngModel)]="term" />
 
-<table *ngIf="clients$ | async as clients" class="w-11/12 shadow-md rounded m-10 mt-0">
+<div *ngIf="loading" class="flex justify-center h-full items-center">
+  <span class="text-3xl" nz-icon [nzType]="'loading'" [nzSpin]="true"></span>
+</div>
+
+<div class="flex justify-between items-center w-full mt-10 mb-5 ">
+  <input
+    type="text"
+    class="px-4 py-2 w-1/2 border rounded-md"
+    placeholder="Search client"
+    [(ngModel)]="term"
+  />
+  <button
+    type="button"
+    class="px-6 py-2 rounded-md bg-blue-800 border-gray-600 shadow-lg text-white text-base font-[Roboto] hover:bg-white hover:text-blue-800 ease-in duration-100"
+    (click)="modalService.openCreate()"
+  >Add Document</button>
+</div>
+
+<table *ngIf="clients$ | async as clients" class="w-full shadow-md rounded p-10 mt-0">
   <thead class="bg-blue-50">
     <tr>
-      <th *ngFor="let header of headers"  [ngClass]="{'text-blue-600' : selectedHeader===header.title && selectedOrder!=='none'}" (click)="useSelector(header.title)" [appSort]="clients"
-        data-order="none" [class]="header.width" class="p-4 text-left font-bold capitalize cursor-pointer" [attr.data-name]="header.title">{{header.title}}
-          <span *ngIf="selectedHeader===header.title && selectedOrder==='desc'" class="relative top-[-3px]" nz-icon nzType="arrow-up" nzTheme="outline"></span>
-          <span *ngIf="selectedHeader===header.title && selectedOrder==='asc'" class="relative top-[-3px]" nz-icon nzType="arrow-down" nzTheme="outline"></span>
+      <th
+        *ngFor="let header of headers"
+        [ngClass]="{'text-blue-600' : selectedHeader===header.title && selectedOrder!=='none'}"
+        (click)="useSelector(header.title)"
+        [appSort]="clients"
+        data-order="none"
+        [class]="header.width"
+        class="p-4 text-left font-bold capitalize cursor-pointer"
+        [attr.data-name]="header.title"
+      >{{header.title}}
+          <span
+            *ngIf="selectedHeader===header.title && selectedOrder==='desc'"
+            class="relative top-[-3px]"
+            nz-icon nzType="arrow-up"
+            nzTheme="outline">
+          </span>
+          <span
+            *ngIf="selectedHeader===header.title && selectedOrder==='asc'"
+            class="relative top-[-3px]"
+            nz-icon
+            nzType="arrow-down"
+            nzTheme="outline">
+          </span>
       </th>
     </tr>
   </thead>
@@ -17,10 +52,23 @@
       <td *ngIf="client.date" class="p-4 text-left">{{ client.date.seconds*1000 | date }}</td>
       <td class="p-4 text-left">{{ client.amount | currency: 'EUR' }}</td>
       <td class="p-4 text-left relative w-full flex">{{ client.notice }}
-        <div class="absolute top-3 right-5 flex gap-5">
-          <button class="text-blue-600" type="button"><span  nz-icon nzType="edit" nzTheme="outline"></span></button>
-          <button class="text-red-500" type="button"><span nz-icon nzType="delete" nzTheme="outline"></span></button>
-        </div>
+      <div class="absolute top-3 right-5 flex gap-5">
+          <button
+            class="text-blue-600"
+            type="button"
+            (click)="modalService.openEdit(); documentsService.selectedDocument(client)"
+            >
+              <span  nz-icon nzType="edit" nzTheme="outline"></span>
+          </button>
+          <button
+            *ngIf="client.id"
+            class="text-red-500"
+            type="button"
+            (click)="documentsService.delete(client.id)"
+            >
+              <span nz-icon nzType="delete" nzTheme="outline"></span>
+          </button>
+      </div>
       </td>
 
     </tr>

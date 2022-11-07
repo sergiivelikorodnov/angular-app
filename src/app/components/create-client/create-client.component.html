@@ -1,0 +1,57 @@
+<form [formGroup]="form" (ngSubmit)="submit()"
+  class="flex items-center gap-2 flex-col"
+>
+  <input
+    type="text"
+    class="w-full border px-4 py-2 rounded-md shadow-sm font-[Roboto]"
+    placeholder="First & Last name"
+    formControlName="client"
+    appFocus
+    required
+  >
+  <p
+    class="text-red-600 font-medium text-sm mb-2 text-left w-full font-[Roboto]"
+    *ngIf="client.errors?.minlength && client.touched"
+    >Minlength of first & last name is 5
+  </p>
+  <p
+    class="text-red-600 font-medium text-sm mb-2 text-left w-full font-[Roboto]"
+    *ngIf="client.errors?.required && client.touched"
+    >First & Last name is required field
+  </p>
+
+  <input
+    type="date"
+    class="w-full border px-4 py-2 rounded-md shadow-sm font-[Roboto]"
+    id="date"
+    formControlName="date"
+  >
+  <p
+    class="text-red-600 font-medium text-sm mb-2 text-left w-full font-[Roboto]"
+    *ngIf="date.errors?.required && date.touched"
+    >Date is required field
+  </p>
+
+  <input
+    type="number"
+    class="w-full border px-4 py-2 rounded-md shadow-sm font-[Roboto]"
+    placeholder="Amount"
+    formControlName="amount"
+    appNumbersOnly
+  >
+  <textarea
+    type="text"
+    rows="4"
+    cols="50"
+    class="w-full border px-4 py-2 rounded-md shadow-sm font-[Roboto]"
+    placeholder="Notice"
+    formControlName="notice"
+  >
+  </textarea>
+  <button
+    [disabled]="client.errors || date.errors || amount.errors"
+    [ngClass]="{'bg-blue-300' : client.errors || date.errors || amount.errors}"
+    class="px-6 py-2 bg-blue-600 text-white rounded-lg font-[Roboto] shadow-md"
+    type="submit"
+  >Submit</button>
+</form>

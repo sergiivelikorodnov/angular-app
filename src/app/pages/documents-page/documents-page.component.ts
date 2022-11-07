@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit } from '@angular/core'
+import { Component, ElementRef, EventEmitter, OnInit } from '@angular/core'
 import { Observable, tap } from 'rxjs'
 import { IClient, IHeader } from 'src/app/models/client'
 import { DocumentsService } from 'src/app/services/documents.service'
+import { ModalService } from 'src/app/services/modal.service'
 import { headers } from '../../data/clients'
 
 @Component({
@@ -10,9 +11,14 @@ import { headers } from '../../data/clients'
   styleUrls: ['./documents-page.component.scss']
 })
 export class DocumentsPageComponent implements OnInit {
-  constructor(private targetElem: ElementRef, private documentsService: DocumentsService) {}
+  constructor(
+    private targetElem: ElementRef,
+    public documentsService: DocumentsService,
+    public modalService: ModalService
+  ) {}
 
   clients$: Observable<IClient[]>
+  selectedClient?: IClient
   headers: IHeader[] = headers
   loading = false
   term = ''
@@ -28,7 +34,6 @@ export class DocumentsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true
-    //this.documentsService.getData()
-    this.clients$ = this.documentsService.getAll() /* .pipe(tap(() => (this.loading = false))) */
+    this.clients$ = this.documentsService.getAll().pipe(tap(() => (this.loading = false)))
   }
 }

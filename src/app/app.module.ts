@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { ProductComponent } from './components/product/product.component'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 
 import { NzIconModule } from 'ng-zorro-antd/icon'
@@ -16,16 +16,20 @@ import { WelcomePageComponent } from './pages/welcome-page/welcome-page.componen
 import { DocumentsPageComponent } from './pages/documents-page/documents-page.component'
 import { NavigationComponent } from './components/navigation/navigation.component'
 import { HeaderComponent } from './components/header/header.component'
-import { ClientComponent } from './components/client/client.component'
 import { SearchClientPipe } from './pipes/search-client.pipe'
 
-import { SortDirective } from './directive/sort.directive'
+import { SortDirective } from './directives/sort.directive'
 import { LoginPageComponent } from './pages/login-page/login-page.component'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
 import { environment } from '../environments/environment'
 import { provideAuth, getAuth } from '@angular/fire/auth'
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'
 import { FIREBASE_OPTIONS } from '@angular/fire/compat'
+import { ModalComponent } from './components/modal/modal.component'
+import { CreateClientComponent } from './components/create-client/create-client.component'
+import { FocusDirective } from './directives/focus.directive'
+import { NumbersOnlyDirective } from './directives/numbers-only.directive'
+import { EditClientComponent } from './components/edit-client/edit-client.component'
 
 const icons: IconDefinition[] = [TagOutline, BarsOutline]
 
@@ -39,15 +43,20 @@ const icons: IconDefinition[] = [TagOutline, BarsOutline]
     DocumentsPageComponent,
     NavigationComponent,
     HeaderComponent,
-    ClientComponent,
     SearchClientPipe,
     SortDirective,
-    LoginPageComponent
+    LoginPageComponent,
+    ModalComponent,
+    CreateClientComponent,
+    FocusDirective,
+    NumbersOnlyDirective,
+    EditClientComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NzIconModule.forChild(icons),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
