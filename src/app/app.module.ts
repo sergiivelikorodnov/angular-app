@@ -29,7 +29,8 @@ import { ModalComponent } from './components/modal/modal.component'
 import { CreateClientComponent } from './components/create-client/create-client.component'
 import { FocusDirective } from './directives/focus.directive'
 import { NumbersOnlyDirective } from './directives/numbers-only.directive'
-import { EditClientComponent } from './components/edit-client/edit-client.component'
+import { EditClientComponent } from './components/edit-client/edit-client.component';
+import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component'
 
 const icons: IconDefinition[] = [TagOutline, BarsOutline]
 
@@ -50,7 +51,8 @@ const icons: IconDefinition[] = [TagOutline, BarsOutline]
     CreateClientComponent,
     FocusDirective,
     NumbersOnlyDirective,
-    EditClientComponent
+    EditClientComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,

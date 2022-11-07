@@ -6,14 +6,18 @@
         <app-edit-client *ngIf="type==='EDIT'" [clientData]="selectedClient"></app-edit-client>
       </div>
       <app-create-client *ngIf="type==='CREATE' "></app-create-client>
+      <div *ngIf="documentService.selectedClient$ | async as selectedClient2">
+        <app-confirm-delete *ngIf="type==='DELETE'" [clientData]="selectedClient2"></app-confirm-delete>
+      </div>
+
     </app-modal>
   </div>
 
   <app-global-error></app-global-error>
   <app-login-page *ngIf="hasRoute('/')"></app-login-page>
-  <div *ngIf="!hasRoute('/')" class="flex flex-col h-full">
+  <div *ngIf="!hasRoute('/')" class="flex flex-col h-full ">
     <app-header></app-header>
-    <div class="max-w-7xl mx-auto flex gap-10 h-full container">
+    <div class="max-w-7xl mx-auto flex flex-col gap-0 h-full container px-1 md:flex-row md:gap-10  sm:px-10 ">
       <app-navigation></app-navigation>
       <div class="w-full">
         <router-outlet></router-outlet>

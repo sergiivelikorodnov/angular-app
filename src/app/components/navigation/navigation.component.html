@@ -1,9 +1,9 @@
-<nav class="h-full text-gray-900 border-r border-gray-100 pr-10 py-10">
-  <span *ngFor="let itemMenu of menu" class="text-gray-900 flex flex-col mb-3">
+<nav class="h-full text-gray-900 border-gray-100 pr-10 py-10 flex flex-row gap-5 md:flex-col md:gap-3 md:border-r">
+  <span *ngFor="let itemMenu of menu" class="text-gray-900">
     <a routerLink={{itemMenu}}
       class="font-bold text-xl font-['Roboto'] text-gray-600"
       [routerLinkActiveOptions]="{exact:true}"
-      routerLinkActive="text-red-700"
+      routerLinkActive="text-red-500 pointer-events-none"
     >
       {{itemMenu | titlecase}}
     </a>

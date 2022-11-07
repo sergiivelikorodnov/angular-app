@@ -13,7 +13,7 @@ export class ProductsService {
   getAll(): Observable<IProduct[]> {
     return this.http
       .get<IProduct[]>('http://localhost:3001/products', {
-        params: new HttpParams().append('_limit', 3)
+        params: new HttpParams() /* .append('_limit', 3) */
       })
       .pipe(delay(100), retry(2), catchError(this.errorHandler.bind(this)))
   }

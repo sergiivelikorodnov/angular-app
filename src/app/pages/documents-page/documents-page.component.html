@@ -3,16 +3,16 @@
   <span class="text-3xl" nz-icon [nzType]="'loading'" [nzSpin]="true"></span>
 </div>
 
-<div class="flex justify-between items-center w-full mt-10 mb-5 ">
+<div class="flex justify-between items-center w-full mt-0 mb-5 flex-col gap-2 sm:flex-row sm:mt-10">
   <input
     type="text"
-    class="px-4 py-2 w-1/2 border rounded-md"
+    class="px-4 py-2 w-full border rounded-md sm:w-1/2"
     placeholder="Search client"
     [(ngModel)]="term"
   />
   <button
     type="button"
-    class="px-6 py-2 rounded-md bg-blue-800 border-gray-600 shadow-lg text-white text-base font-[Roboto] hover:bg-white hover:text-blue-800 ease-in duration-100"
+    class="px-6 py-2 rounded-md border bg-blue-800 border-blue-800 shadow-lg text-white text-base font-[Roboto] hover:bg-white hover:text-blue-800 ease-in duration-100"
     (click)="modalService.openCreate()"
   >Add Document</button>
 </div>
@@ -27,7 +27,7 @@
         [appSort]="clients"
         data-order="none"
         [class]="header.width"
-        class="p-4 text-left font-bold capitalize cursor-pointer"
+        class="p-2 text-left font-bold capitalize cursor-pointer"
         [attr.data-name]="header.title"
       >{{header.title}}
           <span
@@ -48,11 +48,12 @@
   </thead>
   <tbody class="divide-y divide-gray-300">
     <tr *ngFor="let client of clients | searchClient : term">
-      <th class="p-4 text-left">{{ client.client }}</th>
-      <td *ngIf="client.date" class="p-4 text-left">{{ client.date.seconds*1000 | date }}</td>
-      <td class="p-4 text-left">{{ client.amount | currency: 'EUR' }}</td>
-      <td class="p-4 text-left relative w-full flex">{{ client.notice }}
-      <div class="absolute top-3 right-5 flex gap-5">
+      <th class="px-2 py-4 text-left sm:p-4">{{ client.client }}</th>
+      <td *ngIf="client.date" class="px-2 py-4 text-left sm:p-4">{{ client.date.seconds*1000 | date }}</td>
+      <td class="px-2 py-4 text-left sm:p-4">{{ client.amount | currency: 'EUR' }}</td>
+      <td class="px-2 py-4 text-left sm:p-4">{{ client.notice }}</td>
+      <td class="px-2 py-4 text-left relative w-full flex sm:p-4">
+        <div class="flex gap-2 flex-col sm:flex-row sm:gap-5">
           <button
             class="text-blue-600"
             type="button"
@@ -64,11 +65,11 @@
             *ngIf="client.id"
             class="text-red-500"
             type="button"
-            (click)="documentsService.delete(client.id)"
+            (click)="modalService.openDelete(); documentsService.selectedDocument(client)"
             >
               <span nz-icon nzType="delete" nzTheme="outline"></span>
           </button>
-      </div>
+        </div>
       </td>
 
     </tr>

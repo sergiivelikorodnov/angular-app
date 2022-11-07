@@ -1,13 +1,13 @@
-<div class="w-full bg-white shadow-xl py-3">
-  <div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="w-full bg-blue-600 shadow-xl py-3">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-1 sm:px-10">
     <a routerLink='/domov'>
-      <h1 class="text-3xl font-bold text-gray-600 font-[Roboto] my-2">
+      <h1 class="text-3xl font-bold text-white font-[Roboto] my-2">
         {{ title | titlecase }}
       </h1>
     </a>
     <button
       (click)="authService.doLogOut()"
-      class="px-6 py-2 rounded-md bg-white border-gray-600 shadow-lg text-blue-800 text-base font-[Roboto] hover:bg-blue-800 hover:text-white ease-in duration-100">
+      class="px-6 py-2 rounded-md bg-white border-gray-600 shadow-lg text-blue-800 text-base font-[Roboto] hover:bg-red-600 hover:text-white ease-in duration-100">
       Logout
     </button>
   </div>

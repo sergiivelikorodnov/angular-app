@@ -29,6 +29,12 @@
     "title": "Solid Gold Petite Micropave",
     "type": "dress",
     "category": "clothers"
+  },
+  {
+    "id": 6,
+    "title": "Woman Cotton Jacket",
+    "type": "dress",
+    "category": "clothers"
   }
   ]
 }

@@ -31,4 +31,9 @@ export class ModalService {
     this.open()
     this.typeModal$.next('EDIT')
   }
+
+  openDelete() {
+    this.open()
+    this.typeModal$.next('DELETE')
+  }
 }

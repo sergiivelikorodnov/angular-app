@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Timestamp } from '@angular/fire/firestore'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { throwError } from 'rxjs'
 import { IClient } from 'src/app/models/client'
 import { DocumentsService } from 'src/app/services/documents.service'
+import { ErrorService } from 'src/app/services/error.service'
 import { ModalService } from 'src/app/services/modal.service'
 
 @Component({
@@ -11,9 +13,14 @@ import { ModalService } from 'src/app/services/modal.service'
   styleUrls: ['./edit-client.component.scss']
 })
 export class EditClientComponent implements OnInit {
-  constructor(private documentsService: DocumentsService, private modalService: ModalService) {}
+  constructor(
+    private documentsService: DocumentsService,
+    public modalService: ModalService,
+    private errorService: ErrorService
+  ) {}
   @Input() clientData: IClient
   form: FormGroup
+  title = 'Edit client'
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -57,5 +64,11 @@ export class EditClientComponent implements OnInit {
         .then(() => {
           this.modalService.close()
         })
+        .catch(err => this.errorHandler(err))
+  }
+
+  private errorHandler(error: any) {
+    this.errorService.handler(error.message)
+    return throwError(() => error.message)
   }
 }

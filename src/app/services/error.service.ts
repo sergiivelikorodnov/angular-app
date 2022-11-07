@@ -9,6 +9,7 @@ export class ErrorService {
 
   handler(message: string) {
     this.error$.next(message)
+    setTimeout(() => this.error$.next(''), 4000)
   }
 
   clear() {

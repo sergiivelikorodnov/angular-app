@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { Timestamp } from '@angular/fire/firestore'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { throwError } from 'rxjs'
 import { DocumentsService } from 'src/app/services/documents.service'
+import { ErrorService } from 'src/app/services/error.service'
 import { ModalService } from 'src/app/services/modal.service'
 
 @Component({
@@ -10,7 +12,12 @@ import { ModalService } from 'src/app/services/modal.service'
   styleUrls: ['./create-client.component.scss']
 })
 export class CreateClientComponent implements OnInit {
-  constructor(private documentsService: DocumentsService, private modalService: ModalService) {}
+  constructor(
+    private documentsService: DocumentsService,
+    public modalService: ModalService,
+    private errorService: ErrorService
+  ) {}
+  title = 'Create client'
 
   form = new FormGroup({
     client: new FormControl<string>('', [Validators.required, Validators.minLength(5)]),
@@ -48,5 +55,11 @@ export class CreateClientComponent implements OnInit {
         .then(() => {
           this.modalService.close()
         })
+        .catch(err => this.errorHandler(err))
+  }
+
+  private errorHandler(error: any) {
+    this.errorService.handler(error.message)
+    return throwError(() => error.message)
   }
 }

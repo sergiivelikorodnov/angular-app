@@ -26,14 +26,12 @@ export class DocumentsService {
   }
 
   update(document: IClient) {
-    console.log(document)
-
     const documentReference = doc(this.firestore, `documents/${document.id}`)
     return updateDoc(documentReference, { ...document })
   }
 
-  delete(id: string) {
-    const documentReference = doc(this.firestore, `documents/${id}`)
+  delete(document: IClient) {
+    const documentReference = doc(this.firestore, `documents/${document.id}`)
     this.selectedClient$.next(null)
     return deleteDoc(documentReference)
   }

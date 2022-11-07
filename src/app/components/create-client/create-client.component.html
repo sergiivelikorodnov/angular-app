@@ -1,3 +1,4 @@
+<h1 class="font-[Roboto] text-center mb-2 text-lg">{{title}}</h1>
 <form [formGroup]="form" (ngSubmit)="submit()"
   class="flex items-center gap-2 flex-col"
 >
@@ -48,10 +49,18 @@
     formControlName="notice"
   >
   </textarea>
-  <button
+  <div class="flex flex-row gap-3 justify-center">
+    <button
     [disabled]="client.errors || date.errors || amount.errors"
-    [ngClass]="{'bg-blue-300' : client.errors || date.errors || amount.errors}"
     class="px-6 py-2 bg-blue-600 text-white rounded-lg font-[Roboto] shadow-md"
+    [ngClass]="{'bg-blue-300 !important' : client.errors || date.errors || amount.errors}"
     type="submit"
-  >Submit</button>
+    >Submit</button>
+
+    <button
+    class="px-6 py-2 bg-red-600 text-white rounded-lg font-[Roboto] shadow-md"
+    type="button"
+    (click)="modalService.close()"
+    >Cancel</button>
+  </div>
 </form>
