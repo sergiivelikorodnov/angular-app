@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service'
 })
 export class HeaderComponent implements OnInit {
   constructor(public authService: AuthService) {}
+  //Logo title
   title = 'angular app'
 
   ngOnInit() {}

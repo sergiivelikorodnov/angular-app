@@ -17,6 +17,7 @@ export class ConfirmDeleteComponent implements OnInit {
     private errorService: ErrorService
   ) {}
 
+  //Delete client from Firestore after confirmation
   deleteClient() {
     this.documentsService
       .delete(this.clientData)
@@ -26,6 +27,7 @@ export class ConfirmDeleteComponent implements OnInit {
       .catch(err => this.errorHandler(err))
   }
 
+  // Error handler
   private errorHandler(error: any) {
     this.errorService.handler(error.message)
     return throwError(() => error.message)

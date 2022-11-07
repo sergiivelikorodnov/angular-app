@@ -7,6 +7,7 @@ export class Sort {
 
   constructor() {}
 
+  //Sort data for Clients
   public startSort(property: string | number, order: string, type = '') {
     if (order === 'desc') {
       this.sortOrder = -1

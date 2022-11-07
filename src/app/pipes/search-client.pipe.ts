@@ -5,6 +5,8 @@ import { IClient } from '../models/client'
   name: 'searchClient'
 })
 export class SearchClientPipe implements PipeTransform {
+  //Filtering Clients by name
+
   transform(clients: IClient[], search: string): IClient[] {
     if (search === '') return clients
     return clients.filter(client => client.client.toLowerCase().includes(search.toLowerCase()))

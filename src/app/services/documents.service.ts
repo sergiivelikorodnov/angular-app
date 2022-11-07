@@ -15,27 +15,32 @@ export class DocumentsService {
     this.documentsCollection = collection(this.firestore, 'documents')
   }
 
+  //get All coolection data from Firestore
   getAll() {
     return collectionData(this.documentsCollection, {
       idField: 'id'
     }) as Observable<IClient[]>
   }
 
+  //create document to Firestore
   create(document: IClient) {
     return addDoc(this.documentsCollection, document)
   }
 
+  //update document to Firestore
   update(document: IClient) {
     const documentReference = doc(this.firestore, `documents/${document.id}`)
     return updateDoc(documentReference, { ...document })
   }
 
+  //delete document from Firestore
   delete(document: IClient) {
     const documentReference = doc(this.firestore, `documents/${document.id}`)
     this.selectedClient$.next(null)
     return deleteDoc(documentReference)
   }
 
+  //To remember selected client
   selectedDocument(document: IClient | null) {
     this.selectedClient$.next(document)
   }

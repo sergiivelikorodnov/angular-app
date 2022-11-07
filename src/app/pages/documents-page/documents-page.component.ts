@@ -24,6 +24,7 @@ export class DocumentsPageComponent implements OnInit {
   selectedHeader = ''
   selectedOrder = ''
 
+  //Selector for Click Header Tables
   useSelector(value: string) {
     this.selectedHeader = value
     const elem = this.targetElem.nativeElement.querySelector(`[data-name=${value}]`)

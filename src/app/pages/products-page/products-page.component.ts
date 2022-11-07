@@ -5,16 +5,7 @@ import { Observable, tap } from 'rxjs'
 
 @Component({
   selector: 'app-products-page',
-  templateUrl: './products-page.component.html',
-  styles: [
-    `
-      [nz-icon] {
-        margin-right: 6px;
-        font-size: 32px;
-        padding-bottom: 1rem;
-      }
-    `
-  ]
+  templateUrl: './products-page.component.html'
 })
 export class ProductsPageComponent implements OnInit {
   products$: Observable<IProduct[]>

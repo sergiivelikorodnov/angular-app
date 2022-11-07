@@ -51,16 +51,16 @@
   </textarea>
   <div class="flex flex-row gap-3 justify-center">
     <button
-    [disabled]="client.errors || date.errors || amount.errors"
-    class="px-6 py-2 bg-blue-600 text-white rounded-lg font-[Roboto] shadow-md"
-    [ngClass]="{'bg-blue-300 !important' : client.errors || date.errors || amount.errors}"
-    type="submit"
-    >Submit</button>
+      [disabled]="client.errors || date.errors || amount.errors"
+      class="px-6 py-2 bg-blue-600 text-white rounded-lg font-[Roboto] shadow-md"
+      [ngClass]="{'bg-blue-300 !important' : client.errors || date.errors || amount.errors}"
+      type="submit"
+      >Submit</button>
 
     <button
-    class="px-6 py-2 bg-red-600 text-white rounded-lg font-[Roboto] shadow-md"
-    type="button"
-    (click)="modalService.close()"
-    >Cancel</button>
+      class="px-6 py-2 bg-red-600 text-white rounded-lg font-[Roboto] shadow-md"
+      type="button"
+      (click)="modalService.close()"
+      >Cancel</button>
   </div>
 </form>

@@ -18,6 +18,7 @@ export class CreateClientComponent implements OnInit {
   ) {}
   title = 'Create client'
 
+  //create FormGroup with default values
   form = new FormGroup({
     client: new FormControl<string>('', [Validators.required, Validators.minLength(5)]),
     amount: new FormControl<number | null>(null, [Validators.required, Validators.pattern('^[0-9]*$')]),
@@ -25,6 +26,7 @@ export class CreateClientComponent implements OnInit {
     notice: new FormControl<string | null>(null)
   })
 
+  //get access to FormControl to process errors
   get client() {
     return this.form.controls.client as FormControl
   }
@@ -40,6 +42,7 @@ export class CreateClientComponent implements OnInit {
   ngOnInit(): void {}
 
   submit() {
+    //Process Create Firestore Client
     this.form.value.client &&
       this.form.value.amount &&
       this.form.value.date &&
@@ -57,6 +60,7 @@ export class CreateClientComponent implements OnInit {
         .catch(err => this.errorHandler(err))
   }
 
+  // Error handler
   private errorHandler(error: any) {
     this.errorService.handler(error.message)
     return throwError(() => error.message)

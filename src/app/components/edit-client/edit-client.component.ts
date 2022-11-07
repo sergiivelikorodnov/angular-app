@@ -9,8 +9,7 @@ import { ModalService } from 'src/app/services/modal.service'
 
 @Component({
   selector: 'app-edit-client',
-  templateUrl: '../create-client/create-client.component.html',
-  styleUrls: ['./edit-client.component.scss']
+  templateUrl: '../create-client/create-client.component.html'
 })
 export class EditClientComponent implements OnInit {
   constructor(
@@ -23,6 +22,8 @@ export class EditClientComponent implements OnInit {
   title = 'Edit client'
 
   ngOnInit(): void {
+    //insert selected client's data to form fields
+
     this.form = new FormGroup({
       client: new FormControl<string>(this.clientData.client, [Validators.required, Validators.minLength(5)]),
       amount: new FormControl<number | null>(this.clientData.amount, [
@@ -36,6 +37,7 @@ export class EditClientComponent implements OnInit {
     })
   }
 
+  //get access to FormControl to process errors
   get client() {
     return this.form.controls.client as FormControl
   }
@@ -48,25 +50,24 @@ export class EditClientComponent implements OnInit {
     return this.form.controls.amount as FormControl
   }
 
+  //Update client
   submit() {
-    this.form.value.client &&
-      this.form.value.amount &&
-      this.form.value.date &&
-      this.documentsService
-        .update({
-          id: this.clientData.id,
-          creatingDate: this.clientData.creatingDate,
-          client: this.form.value.client,
-          amount: this.form.value.amount,
-          date: Timestamp.fromDate(new Date(this.form.value.date)),
-          notice: this.form.value.notice
-        })
-        .then(() => {
-          this.modalService.close()
-        })
-        .catch(err => this.errorHandler(err))
+    this.documentsService
+      .update({
+        id: this.clientData.id,
+        creatingDate: this.clientData.creatingDate,
+        client: this.form.value.client,
+        amount: this.form.value.amount,
+        date: Timestamp.fromDate(new Date(this.form.value.date)),
+        notice: this.form.value.notice
+      })
+      .then(() => {
+        this.modalService.close()
+      })
+      .catch(err => this.errorHandler(err))
   }
 
+  // Error handler
   private errorHandler(error: any) {
     this.errorService.handler(error.message)
     return throwError(() => error.message)

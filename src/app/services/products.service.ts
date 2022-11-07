@@ -10,6 +10,7 @@ import { ErrorService } from './error.service'
 export class ProductsService {
   constructor(private http: HttpClient, private errorService: ErrorService) {}
 
+  //get all Products from virtual Json server. Made manual delay to see loading and 2 retry if connection is lost
   getAll(): Observable<IProduct[]> {
     return this.http
       .get<IProduct[]>('http://localhost:3001/products', {
@@ -18,6 +19,7 @@ export class ProductsService {
       .pipe(delay(100), retry(2), catchError(this.errorHandler.bind(this)))
   }
 
+  //Error handler
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handler(error.message)
     return throwError(() => error.message)
