@@ -1,16 +1,16 @@
 <div class="h-screen">
 
   <div *ngIf="modalService.isVisible$ | async">
-    <app-modal *ngIf="modalService.typeModal$ | async as type">
-      <div *ngIf="documentService.selectedClient$ | async as selectedClient">
-        <app-edit-client *ngIf="type==='EDIT'" [clientData]="selectedClient"></app-edit-client>
-      </div>
-      <app-create-client *ngIf="type==='CREATE' "></app-create-client>
-      <div *ngIf="documentService.selectedClient$ | async as selectedClient2">
-        <app-confirm-delete *ngIf="type==='DELETE'" [clientData]="selectedClient2"></app-confirm-delete>
-      </div>
+      <app-modal *ngIf="modalService.typeModal$ | async as type">
+        <div *ngIf="documentService.selectedClient$ | async as selectedClient">
+          <app-edit-client *ngIf="type==='EDIT'" [clientData]="selectedClient"></app-edit-client>
+        </div>
+        <app-create-client *ngIf="type==='CREATE' "></app-create-client>
+        <div *ngIf="documentService.selectedClient$ | async as selectedClient2">
+          <app-confirm-delete *ngIf="type==='DELETE'" [clientData]="selectedClient2"></app-confirm-delete>
+        </div>
 
-    </app-modal>
+      </app-modal>
   </div>
 
   <app-global-error></app-global-error>

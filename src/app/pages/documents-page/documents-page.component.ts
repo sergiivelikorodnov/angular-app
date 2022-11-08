@@ -1,13 +1,31 @@
-import { Component, ElementRef, EventEmitter, OnInit } from '@angular/core'
+import { animate, state, style, transition, trigger } from '@angular/animations'
+import { Component, ElementRef, OnInit } from '@angular/core'
 import { Observable, tap } from 'rxjs'
 import { IClient, IHeader } from 'src/app/models/client'
 import { DocumentsService } from 'src/app/services/documents.service'
 import { ModalService } from 'src/app/services/modal.service'
 import { headers } from '../../data/clients'
 
+const fadeInOut = trigger('fadeInOut', [
+  state(
+    'open',
+    style({
+      opacity: 0
+    })
+  ),
+  state(
+    'close',
+    style({
+      opacity: 1
+    })
+  ),
+  transition('open => close', [animate('1s ease-out')]),
+  transition('close => open', [animate('1s ease-in')])
+])
 @Component({
   selector: 'app-documents-page',
-  templateUrl: './documents-page.component.html'
+  templateUrl: './documents-page.component.html',
+  animations: [fadeInOut]
 })
 export class DocumentsPageComponent implements OnInit {
   constructor(

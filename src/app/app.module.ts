@@ -29,8 +29,9 @@ import { ModalComponent } from './components/modal/modal.component'
 import { CreateClientComponent } from './components/create-client/create-client.component'
 import { FocusDirective } from './directives/focus.directive'
 import { NumbersOnlyDirective } from './directives/numbers-only.directive'
-import { EditClientComponent } from './components/edit-client/edit-client.component';
+import { EditClientComponent } from './components/edit-client/edit-client.component'
 import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 const icons: IconDefinition[] = [TagOutline, BarsOutline]
 
@@ -60,6 +61,7 @@ const icons: IconDefinition[] = [TagOutline, BarsOutline]
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     NzIconModule.forChild(icons),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

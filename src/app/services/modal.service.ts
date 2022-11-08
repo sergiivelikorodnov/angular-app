@@ -8,6 +8,7 @@ import { DocumentsService } from './documents.service'
 })
 export class ModalService {
   isVisible$ = new BehaviorSubject<boolean>(false)
+
   typeModal$ = new BehaviorSubject<string>('')
 
   constructor(private documentService: DocumentsService) {}
